@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Compass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="bg-glow glow-a"></div>
+  <div class="bg-glow glow-b"></div>
+
+  <main class="shell">
+    <section class="auth-panel card" id="authPanel">
+      <div class="tabs">
+        <button class="tab-btn active" id="loginTab" type="button">Login</button>
+        <button class="tab-btn" id="registerTab" type="button">Register</button>
+      </div>
+
+      <div id="loginView">
+        <h1>Welcome Back</h1>
+        <p class="sub">Sign in to explore career domains tailored to your course.</p>
+        <form id="loginForm" class="form-grid">
+          <label for="loginUsername">Username</label>
+          <input id="loginUsername" type="text" placeholder="Enter username" required>
+
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" placeholder="Enter password" required>
+
+          <button class="primary-btn" type="submit">Login</button>
+        </form>
+      </div>
+
+      <div id="registerView" class="hidden">
+        <h1>Create Account</h1>
+        <p class="sub">Register once and get domain insights for your course path.</p>
+        <form id="registerForm" class="form-grid">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text" placeholder="Enter your name" required>
+
+          <label for="course">Course</label>
+          <select id="course" required>
+            <option value="">Select course</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Medical">Medical</option>
+            <option value="Commerce">Commerce</option>
+          </select>
+
+          <label for="specialization">Specialization</label>
+          <select id="specialization" required>
+            <option value="">Select specialization</option>
+          </select>
+
+          <label for="registerUsername">Username</label>
+          <input id="registerUsername" type="text" placeholder="Choose username" required>
+
+          <label for="registerPassword">Password</label>
+          <input id="registerPassword" type="password" placeholder="Choose password" required>
+
+          <button class="primary-btn" type="submit">Register</button>
+        </form>
+      </div>
+
+      <p id="authMessage" class="message"></p>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard">
+      <header class="card dashboard-head">
+        <div>
+          <h2 id="welcomeLine">Logged in</h2>
+          <p id="profileLine" class="sub"></p>
+        </div>
+        <button id="logoutBtn" class="ghost-btn" type="button">Logout</button>
+      </header>
+
+      <section class="card" id="topRecommendedSection">
+        <h3>Top 5 recommended roles</h3>
+        <p class="sub">Ranked by demand outlook and typical compensation for your specialization.</p>
+        <div id="topRolesList" class="top-roles"></div>
+      </section>
+
+      <section class="card" id="exploreSection">
+        <h3>Explore domains &amp; roles</h3>
+        <p class="sub">Search by domain or job title. Use filters to narrow high-demand roles or salary bands (India, indicative).</p>
+        <div class="toolbar">
+          <label class="sr-only" for="roleSearch">Search domains or roles</label>
+          <input type="search" id="roleSearch" class="search-input" placeholder="Search domains or job roles…" autocomplete="off">
+          <label class="filter-check">
+            <input type="checkbox" id="filterHighDemand"> High-demand only
+          </label>
+          <label class="filter-select">
+            Min (LPA)
+            <select id="salaryMin">
+              <option value="0">0</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="8">8</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
+          </label>
+          <label class="filter-select">
+            Max (LPA)
+            <select id="salaryMax">
+              <option value="8">8</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="50" selected>50</option>
+            </select>
+          </label>
+        </div>
+        <p id="filterSummary" class="filter-summary sub"></p>
+        <div id="domainList" class="domain-grid"></div>
+      </section>
+
+      <section class="card domain-detail hidden" id="domainDetail"></section>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
